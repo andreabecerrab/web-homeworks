@@ -5,6 +5,9 @@
 <p>
     <a href="{{ route('products.create') }}">Create a product</a>
 </p>
+<p>
+    <a href="{{ route('instructions.index') }}">View instructions</a>
+</p>
 <table>
     <thead>
         <tr>
