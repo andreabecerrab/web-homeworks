@@ -1,21 +1,29 @@
 @extends('layouts.main')
 
 @section('content')
-<h1>Create your coin here!</h1>
+<h1>Update a product</h1>
 
-<form action="{{ route('coins.update', ['coin' => $coin]) }}" method="POST">
+<form action="{{ route('products.update', ['product' => $product]) }}" method="POST">
     @csrf
     @method('PUT')
-    <div>
-        <label for="">Short name</label>
-        <input type="text" name="short_name">
-    </div>
     <div>
         <label for="">Name</label>
         <input type="text" name="name">
     </div>
     <div>
-        <input type="submit" value="Store">
+        <label for="">Category</label>
+        <input type="text" name="category">
+    </div>
+    <div>
+        <label for="">Description</label>
+        <input type="text" name="description">
+    </div>
+    <div>
+        <label for="">Origin</label>
+        <input type="text" name="origin">
+    </div>
+    <div>
+        <input type="submit" value="Save">
     </div>
 </form>
 @endsection
