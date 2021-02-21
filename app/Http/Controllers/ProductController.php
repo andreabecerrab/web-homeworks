@@ -44,12 +44,12 @@ class ProductController extends Controller
         $product -> origin = $arr['origin'];
         $product -> description = $arr['description'];
         $product -> save();
-        //create the instruction
-        $instruction = new Instruction();
-        $instruction->instruction= $arr['instruction'];
 
-        $product->instruction()->save($instruction);
-        
+        $instruction = new Instruction();
+        $instruction->instruction = $arr['instruction'];
+
+        $product->instructions()->save($instruction);
+
         return redirect()->route('products.index');
     }
 
@@ -82,15 +82,25 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, instructions)
+    public function update(Request $request, Product $product)
     {
         $arr = $request->input();
         $product -> name= $arr['name'];
         $product -> category = $arr['category'];
         $product -> origin = $arr['origin'];
         $product -> description = $arr['description'];
-        $product->instruction->instruction = $arr['instruction'];
-        $product->save();
+
+        if($product -> instructions != null){
+            $product -> instructions -> instruction = $arr['instruction'];
+        }else{
+            $instruction = new Instruction();
+            $instruction->instruction = $arr['instruction'];
+            $product->instructions()->save($instruction);
+        }
+
+
+
+        $product->push();
         return redirect()->route('products.index');
     }
 

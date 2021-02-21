@@ -3,6 +3,7 @@
 @section('content')
 <h1>Update a product</h1>
 
+
 <form action="{{ route('products.update', ['product' => $product]) }}" method="POST">
     @csrf
     @method('PUT')

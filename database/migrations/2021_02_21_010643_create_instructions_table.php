@@ -14,11 +14,12 @@ class CreateInstructionsTable extends Migration
     public function up()
     {
         Schema::create('instructions', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('product_id');
             $table->string('instruction');
-            $table->unsignedInteger('product_id')->nullable();
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
+
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

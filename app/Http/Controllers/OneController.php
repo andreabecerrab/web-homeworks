@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Instruction;
-use App\Product;
 
-class InstructionController extends Controller
+class OneController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,7 @@ class InstructionController extends Controller
      */
     public function index()
     {
-        $instructions = Instruction::all();
-        return view('instructions.index', ['instructions' => $instructions]);
+        //
     }
 
     /**
@@ -24,7 +21,7 @@ class InstructionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Product $product)
+    public function create()
     {
         //
     }
@@ -46,9 +43,9 @@ class InstructionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Instruction $instruction)
+    public function show($id)
     {
-        return view('instructions.show', ['instruction' => $instruction]);
+        //
     }
 
     /**
@@ -57,9 +54,9 @@ class InstructionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Instruction $instruction)
+    public function edit($id)
     {
-        return view('instructions.edit', ['instruction' => $instruction]);
+        //
     }
 
     /**
@@ -69,12 +66,9 @@ class InstructionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Instruction $instruction)
+    public function update(Request $request, $id)
     {
-        $arr = $request->input();
-        $instruction -> instruction= $arr['instruction'];
-        $instruction->save();
-        return redirect()->route('instructions.index');
+        //
     }
 
     /**
@@ -83,9 +77,8 @@ class InstructionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Instruction $instruction)
+    public function destroy($id)
     {
-        $instruction->delete();
-        return redirect()->route('instructions.index');
+        //
     }
 }

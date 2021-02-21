@@ -17,6 +17,9 @@
             <tr>
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->name }}</td>
+                @if ($item -> instructions != null)
+                <td>{{ $item -> instructions -> instruction }}</td>
+                @endif
                 <td>
                     <a href="{{ route('products.edit', ['product' => $item]) }}">
                         Update
@@ -26,11 +29,6 @@
                         @method('DELETE')
                         <input type="submit" value="Delete">
                     </form>
-                </td>
-                <td>
-                    <a href="{{ route('instructions.create', ['product' => $item]) }}">
-                        Add instruction
-                    </a>
                 </td>
             </tr>
         @endforeach
