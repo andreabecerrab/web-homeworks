@@ -15,8 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-
-        return view('product.index', ['products' => $products]);
+        return view('products.index', ['products' => $products]);
     }
 
     /**
@@ -26,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
@@ -37,7 +36,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $arr = $request->input();
+        $product = new Product();
+        $product -> name= $arr['name'];
+        $product -> category = $arr['category'];
+        $product -> origin = $arr['origin'];
+        $product -> description = $arr['description'];
+        $product -> save();
+        return redirect()->route('products.index');
     }
 
     /**
@@ -57,9 +63,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        return view('products.edit', ['product' => $product]);
     }
 
     /**
@@ -69,9 +75,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $arr = $request->input();
+        $product -> name= $arr['name'];
+        $product -> category = $arr['category'];
+        $product -> origin = $arr['origin'];
+        $product -> description = $arr['description'];
+        $product->save();
+        return redirect()->route('products.index');
     }
 
     /**
@@ -80,8 +92,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('products.index');
     }
 }

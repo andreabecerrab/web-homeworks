@@ -1,10 +1,14 @@
-<h1>Create your coin here!</h1>
-<form action="{{ route('coins.store') }}" method="POST">
+<h1>Create products</h1>
+<form action="{{ route('products.store') }}" method="POST">
   @csrf
-  <label for="fname">Name:</label><br>
-  <input type="text"  name="fname" ><br>
-  <label for="sname">Short name:</label><br>
-  <input type="text" name="sname" ><br><br>
+  <label for="name">Name:</label><br>
+  <input type="text"  name="name" ><br>
+  <label for="category">Category:</label><br>
+  <input type="text"  name="category" ><br>
+  <label for="description">Description:</label><br>
+  <input type="text"  name="description"><br>
+  <label for="origin">Origin:</label><br>
+  <input type="text"  name="origin" ><br>
   <input type="submit" value="Submit">
 </form>
 
