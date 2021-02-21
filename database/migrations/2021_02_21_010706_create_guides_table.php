@@ -15,6 +15,9 @@ class CreateGuidesTable extends Migration
     {
         Schema::create('guides', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('type');
+            $table->string('description');
             $table->timestamps();
         });
     }
