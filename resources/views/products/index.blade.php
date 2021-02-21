@@ -17,6 +17,7 @@
             <tr>
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->name }}</td>
+                <!-- show instruction if it has one -->
                 @if ($item -> instructions != null)
                 <td>{{ $item -> instructions -> instruction }}</td>
                 @endif
