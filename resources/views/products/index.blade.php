@@ -13,6 +13,7 @@
         <tr>
             <th>#</th>
             <th>Name</th>
+            <th>Instruction</th>
         </tr>
     </thead>
     <tbody>
