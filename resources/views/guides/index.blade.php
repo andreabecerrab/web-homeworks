@@ -1,10 +1,13 @@
 @extends('layouts.main')
-
 @section('content')
-<h1>List of products</h1>
+
+
+<h1>List of guides</h1>
+
 <p>
-    <a href="{{ route('products.create') }}">Create a product</a>
+    <a href="{{route('guides.create')}}"> Create a guide </a>
 </p>
+
 <table>
     <thead>
         <tr>
@@ -13,28 +16,27 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($products as $item)
+        @foreach ($guides as $item)
             <tr>
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->name }}</td>
                 <td>
-                    <a href="{{ route('products.edit', ['product' => $item]) }}">
+                    <a href="{{ route('guides.show', ['guide' => $item]) }}">
+                        Show
+                    </a> |
+                    <a href="{{ route('guides.edit', ['guide' => $item]) }}">
                         Update
                     </a>
-                    <form action="{{ route('products.destroy', ['product' => $item]) }}" method="post">
+                    <form action="{{ route('guides.destroy', ['guide' => $item]) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="Delete">
                     </form>
                 </td>
-                <td>
-                    <a href="{{ route('instructions.create', ['product' => $item]) }}">
-                        Add instruction
-                    </a>
-                </td>
             </tr>
         @endforeach
     </tbody>
 </table>
+
 
 @endsection

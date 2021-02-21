@@ -23,6 +23,10 @@
         <input type="text" name="origin">
     </div>
     <div>
+        <label for="">Instruction to keep it healthy:</label>
+        <input type="text" name="instruction">
+    </div>
+    <div>
         <input type="submit" value="Save">
     </div>
 </form>

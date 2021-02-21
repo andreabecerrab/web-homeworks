@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
 use App\Instruction;
+use App\Product;
 
-class ProductController extends Controller
+class InstructionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('products.index', ['products' => $products]);
+        $instructions = Instruction::all();
+        return view('instructions.index', ['instructions' => $instructions]);
     }
 
     /**
@@ -26,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('instructions.create', ['product' => $product]);
     }
 
     /**
@@ -35,21 +35,13 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Product $product)
     {
-        $arr = $request->input();
-        $product = new Product();
-        $product -> name= $arr['name'];
-        $product -> category = $arr['category'];
-        $product -> origin = $arr['origin'];
-        $product -> description = $arr['description'];
-        $product -> save();
-        //create the instruction
         $instruction = new Instruction();
         $instruction->instruction= $arr['instruction'];
-
         $product->instruction()->save($instruction);
         
+        $product->save();
         return redirect()->route('products.index');
     }
 
@@ -59,9 +51,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Instruction $instruction)
     {
-        //
+        return view('instructions.show', ['instruction' => $instruction]);
     }
 
     /**
@@ -70,9 +62,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Instruction $instruction)
     {
-        return view('products.edit', ['product' => $product]);
+        return view('instructions.edit', ['instruction' => $instruction]);
     }
 
     /**
@@ -82,16 +74,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, instructions)
+    public function update(Request $request, Instruction $instruction)
     {
         $arr = $request->input();
-        $product -> name= $arr['name'];
-        $product -> category = $arr['category'];
-        $product -> origin = $arr['origin'];
-        $product -> description = $arr['description'];
-        $product->instruction->instruction = $arr['instruction'];
-        $product->save();
-        return redirect()->route('products.index');
+        $instruction -> instruction= $arr['instruction'];
+        $instruction->save();
+        return redirect()->route('instructions.index');
     }
 
     /**
@@ -100,9 +88,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Instruction $instruction)
     {
-        $product->delete();
-        return redirect()->route('products.index');
+        $instruction->delete();
+        return redirect()->route('instructions.index');
     }
 }

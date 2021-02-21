@@ -12,6 +12,8 @@
   <input type="text"  name="description"><br>
   <label for="origin">Origin:</label><br>
   <input type="text"  name="origin" ><br>
+  <label for="instruction">Instruction to keep it healthy:</label><br>
+  <input type="text"  name="instruction" ><br>
   <input type="submit" value="Submit">
 </form>
 @endsection
