@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Guide;
+use App\GuidesProduct;
 
 class ProductController extends Controller
 {
@@ -45,6 +46,16 @@ class ProductController extends Controller
         $product -> origin = $arr['origin'];
         $product -> description = $arr['description'];
         $product -> save();
+
+        $guides = Guide::all();
+        foreach ($guides as $item){
+            if (isset($_POST[$item->name])) {
+                $guideProduct = new GuidesProduct();
+                $guideProduct -> product_id = $product -> id;
+                $guideProduct -> guide_id = $item -> id;
+                $guideProduct -> save();
+            }
+        }
         return redirect()->route('products.index');
     }
 

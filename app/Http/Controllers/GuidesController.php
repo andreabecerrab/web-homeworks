@@ -45,7 +45,7 @@ class GuidesController extends Controller
         $guide -> type = $arr['type'];
         $guide -> description = $arr['description'];
         $guide -> save();
-        
+
         $products = Product::all();
         foreach ($products as $item){
             if (isset($_POST[$item->name])) {
@@ -107,7 +107,7 @@ class GuidesController extends Controller
      */
     public function destroy(Guide $guide)
     {
-        $product->delete();
+        $guide->delete();
         return redirect()->route('guides.index');
     }
 }
