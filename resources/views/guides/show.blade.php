@@ -19,4 +19,29 @@
         </tr>
     </tbody>
 </table>
+<h2>Products that belong to this guide</h2>
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Origin</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($guide->products as $item)
+            <tr>
+                <td>{{ $item->id }}</td>
+                <td>{{ $item->name }}</td>
+                <td>{{ $item->category }}</td>
+                <td>{{ $item->origin }}</td>
+                <td>{{ $item->description }}</td>
+                
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+
 @endsection

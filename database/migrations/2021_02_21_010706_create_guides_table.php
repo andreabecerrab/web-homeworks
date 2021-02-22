@@ -14,7 +14,7 @@ class CreateGuidesTable extends Migration
     public function up()
     {
         Schema::create('guides', function (Blueprint $table) {
-            $table->id();
+            $table->id() -> bigIncrements();
             $table->string('name');
             $table->string('type');
             $table->string('description');

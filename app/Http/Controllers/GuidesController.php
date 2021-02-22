@@ -52,7 +52,7 @@ class GuidesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Guide $guide)
-    {
+    {   
         return view('guides.show', ['guide' => $guide]);
     }
 
