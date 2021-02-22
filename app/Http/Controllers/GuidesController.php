@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Guide;
+use App\Product;
+use App\GuidesProduct;
 
 class GuidesController extends Controller
 {
@@ -25,7 +27,8 @@ class GuidesController extends Controller
      */
     public function create()
     {
-        return view('guides.create');
+        $products = Product::all();
+        return view('guides.create',['products' => $products]);
     }
 
     /**
@@ -42,6 +45,18 @@ class GuidesController extends Controller
         $guide -> type = $arr['type'];
         $guide -> description = $arr['description'];
         $guide -> save();
+        
+        $products = Product::all();
+        foreach ($products as $item){
+            if (isset($_POST[$item->name])) {
+                $guideProduct = new GuidesProduct();
+                $guideProduct -> guide_id = $guide -> id;
+                $guideProduct -> product_id = $item -> id;
+                $guideProduct -> save();
+            }
+        }
+
+        
         return redirect()->route('guides.index');
     }
 

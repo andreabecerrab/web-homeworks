@@ -12,6 +12,12 @@
   <input type="text"  name="description"><br>
   <label for="origin">Origin:</label><br>
   <input type="text"  name="origin" ><br>
+
+  @foreach ($guides as $item)
+        <input type="checkbox" id={{ $item->id }} name={{ $item->name }} value={{ $item->name }}>
+        <label for={{ $item->id }}> {{ $item->name }}</label><br>
+  @endforeach
+
   <input type="submit" value="Submit">
 </form>
 @endsection

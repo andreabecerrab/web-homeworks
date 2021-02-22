@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Guide;
 
 class ProductController extends Controller
 {
@@ -25,7 +26,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $guides = Guide::all();
+        return view('products.create', ['guides' => $guides]);
     }
 
     /**
