@@ -18,6 +18,9 @@
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->name }}</td>
                 <td>
+                    <a href="{{ route('products.show', ['product' => $item]) }}">
+                        Show
+                    </a> |
                     <a href="{{ route('products.edit', ['product' => $item]) }}">
                         Update
                     </a>
