@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-<h1>List of coins</h1>
+<h1>List of products</h1>
 <p>
     <a href="{{ route('products.create') }}">Create a product</a>
 </p>
