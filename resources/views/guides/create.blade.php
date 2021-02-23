@@ -14,7 +14,7 @@
     <input type="text" name="description"><br>
 
     @foreach ($products as $item)
-        <input type="checkbox" name={{ $item->name }} id={{ $item->id }} >
+        <input type="checkbox" value="{{ $item->id }}" name="products[]">
         <label for="{{ $item->id }}"> {{ $item->name }}</label><br>
     @endforeach
 

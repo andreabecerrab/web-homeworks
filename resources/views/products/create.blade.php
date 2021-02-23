@@ -14,7 +14,7 @@
   <input type="text"  name="origin" ><br>
 
   @foreach ($guides as $item)
-        <input type="checkbox" name={{ $item->name }} id={{ $item->id }}>
+        <input type="checkbox" name="guides[]" value="{{ $item->id }}">
         <label for="{{ $item->id }}"> {{ $item->name }}</label><br>
   @endforeach
 

@@ -3,10 +3,14 @@
 
 
 <h1>List of guides</h1>
-
+<!-- create row -->
+<p>
+    <a href="{{route('products.index')}}"> Home </a>
+</p>
 <p>
     <a href="{{route('guides.create')}}"> Create a guide </a>
 </p>
+
 
 <table>
     <thead>
@@ -22,11 +26,8 @@
             <tr>
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->name }}</td>
-<<<<<<< HEAD
-=======
                 <td>{{ $item->type }}</td>
                 <td>{{ $item->description }}</td>
->>>>>>> 9edffdd04eb0259a2ebce6594a4564b7f74b4efc
                 <td>
                     <a href="{{ route('guides.show', ['guide' => $item]) }}">
                         Show

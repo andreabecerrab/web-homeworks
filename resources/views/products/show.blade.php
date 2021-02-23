@@ -38,7 +38,7 @@
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->type }}</td>
                 <td>{{ $item->description }}</td>
-                
+
             </tr>
         @endforeach
     </tbody>

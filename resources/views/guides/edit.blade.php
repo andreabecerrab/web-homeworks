@@ -17,6 +17,11 @@
         <label for="">Description</label>
         <input type="text" name="description" value="{{ $guide->description }}">
     </div>
+    <h1>Products that belong to this guide:</h1>
+    @foreach ($products as $item)
+        <input type="checkbox" value="{{ $item->id }}" name="products[]">
+        <label for="{{ $item->id }}"> {{ $item->name }}</label><br>
+    @endforeach
     <div>
         <input type="submit" value="Store">
     </div>

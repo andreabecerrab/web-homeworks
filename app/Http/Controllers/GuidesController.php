@@ -46,17 +46,10 @@ class GuidesController extends Controller
         $guide -> description = $arr['description'];
         $guide -> save();
 
-        $products = Product::all();
-        foreach ($products as $item){
-            if (isset($_POST[$item->name])) {
-                $guideProduct = new GuidesProduct();
-                $guideProduct -> guide_id = $guide -> id;
-                $guideProduct -> product_id = $item -> id;
-                $guideProduct -> save();
-            }
-        }
+        $product = Product::find($request->get('products'));
+        $guide->products()->attach($product);
 
-        
+
         return redirect()->route('guides.index');
     }
 
@@ -67,7 +60,7 @@ class GuidesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Guide $guide)
-    {   
+    {
         return view('guides.show', ['guide' => $guide]);
     }
 
@@ -79,7 +72,8 @@ class GuidesController extends Controller
      */
     public function edit(Guide $guide)
     {
-        return view('guides.edit', ['guide' => $guide]);
+        $products = Product::all();
+        return view('guides.edit', ['guide' => $guide, 'products' => $products]);
     }
 
     /**
@@ -96,6 +90,11 @@ class GuidesController extends Controller
         $guide -> type = $arr['type'];
         $guide -> description = $arr['description'];
         $guide->save();
+
+        $product = Product::find($request->get('products'));
+        $guide->products()->sync($product);
+
+
         return redirect()->route('guides.index');
     }
 
