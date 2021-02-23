@@ -3,16 +3,16 @@
 @section('content')
 <!-- create row -->
 <p>
-    <a href="{{ route('guides.index') }}">See all guides</a>
+    <a href="{{ route('guides.index') }}">See guides</a>
+</p>
+<p>
+    <a href="{{ route('instructions.index') }}">See instrctions</a>
 </p>
 
 <h1>List of products</h1>
 <!-- create row -->
 <p>
     <a href="{{ route('products.create') }}">Create a product</a>
-</p>
-<p>
-    <a href="{{ route('instructions.index') }}">View instructions</a>
 </p>
 <table>
     <thead>

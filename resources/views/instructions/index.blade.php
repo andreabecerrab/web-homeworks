@@ -2,6 +2,7 @@
 
 @section('content')
 <h1>List of instructions</h1>
+<!-- create row -->
 
 <table>
     <thead>

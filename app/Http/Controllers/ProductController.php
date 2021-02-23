@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Guide;
 use App\GuidesProduct;
+use App\Instruction;
 
 class ProductController extends Controller
 {
