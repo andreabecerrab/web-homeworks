@@ -5,9 +5,6 @@
 <h1>List of guides</h1>
 <!-- create row -->
 <p>
-    <a href="{{route('products.index')}}"> Home </a>
-</p>
-<p>
     <a href="{{route('guides.create')}}"> Create a guide </a>
 </p>
 

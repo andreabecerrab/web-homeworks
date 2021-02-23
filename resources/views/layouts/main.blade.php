@@ -12,6 +12,16 @@
         <title>Our web application</title>
     </head>
     <body>
-        @yield('content')
+    <!-- create row -->
+    <p>
+        <a href="{{ route('products.index') }}">See products</a>
+    </p>
+    <p>
+        <a href="{{ route('instructions.index') }}">See contents</a>
+    </p>
+    <p>
+        <a href="{{ route('guides.index') }}">See guides</a>
+    </p>
+    @yield('content')
     </body>
 </html>

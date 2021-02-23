@@ -1,14 +1,6 @@
 @extends('layouts.main')
 
 @section('content')
-<!-- create row -->
-<p>
-    <a href="{{ route('guides.index') }}">See guides</a>
-</p>
-<p>
-    <a href="{{ route('instructions.index') }}">See instrctions</a>
-</p>
-
 <h1>List of products</h1>
 <!-- create row -->
 <p>
@@ -19,7 +11,7 @@
         <tr>
             <th>#</th>
             <th>Name</th>
-            <th>Instruction</th>
+            <th>Content</th>
         </tr>
     </thead>
     <tbody>
