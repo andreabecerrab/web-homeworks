@@ -8,7 +8,7 @@
             <tr>
                 <th>#</th>
                 <th>Instruction</th>
-                <th>Update</th>
+                <th>Edit</th>
                 <th>Delete</th>
             </tr>
         </thead>
@@ -20,7 +20,7 @@
                     <td>
                         <a href="{{ route('instructions.edit', ['instruction' => $item]) }}">
                             <span class="material-icons">
-                                visibility
+                                mode
                             </span>
                         </a>
                     </td>

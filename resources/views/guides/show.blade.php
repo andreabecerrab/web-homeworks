@@ -1,47 +1,33 @@
 @extends('layouts.main')
 
 @section('content')
-<table>
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{ $guide->id }}</td>
-            <td>{{ $guide->name }}</td>
-            <td>{{ $guide->type }}</td>
-            <td>{{ $guide->description }}</td>
-        </tr>
-    </tbody>
-</table>
-<h2>Products that belong to this guide</h2>
-<table>
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Origin</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($guide->products as $item)
-            <tr>
-                <td>{{ $item->id }}</td>
-                <td>{{ $item->name }}</td>
-                <td>{{ $item->category }}</td>
-                <td>{{ $item->origin }}</td>
-                <td>{{ $item->description }}</td>
+<div class="row">
+    <div style="padding: 2rem;" class="col-2">
+        <div class="card " style="width: 18rem;">
+            <img src="{{ url('img/nutrition.jpg') }}" class="card-img-top" >
 
-            </tr>
+            <div class="card-body">
+                <h5 class="card-title">{{ $guide->name }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ $guide->type }}</h6>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{ $guide->description }}</li>
+            </ul>
+        </div>
+    </div>
+    <div style="padding: 2rem;" class="col">
+        <h2 class="mb-3">Products that belong to his guide</h2>
+        @foreach ($guide->products as $item)
+        <div class="card border-info" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ $item->name }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ $item->category }}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{ $item->origin }}</h6>
+                <p class="card-text">{{ $item->description }}</p>
+            </div>
+        </div>
         @endforeach
-    </tbody>
-</table>
+    </div>
+</div>
 
 @endsection

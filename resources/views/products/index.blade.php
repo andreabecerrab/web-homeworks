@@ -14,7 +14,7 @@
                 <th>Name</th>
                 <th>Content</th>
                 <th>Show</th>
-                <th>Update</th>
+                <th>Edit</th>
                 <th>Delete</th>
             </tr>
         </thead>
