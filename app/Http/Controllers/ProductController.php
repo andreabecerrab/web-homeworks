@@ -48,6 +48,12 @@ class ProductController extends Controller
 
         $product -> save();
 
+        // create the instruction
+        $instruction = new Instruction();
+        $instruction->instruction = $arr['instruction'];
+        //save it in product
+        $product->instructions()->save($instruction);
+        // save guides
         $guide = Guide::find($request->get('guides'));
         $product->guides()->attach($guide);
 
@@ -91,6 +97,7 @@ class ProductController extends Controller
         $product -> origin = $arr['origin'];
         $product -> description = $arr['description'];
 
+        //check if ir has a instruction, if not the create a new one
         if($product -> instructions != null){
             $product -> instructions -> instruction = $arr['instruction'];
         }else{
@@ -98,9 +105,7 @@ class ProductController extends Controller
             $instruction->instruction = $arr['instruction'];
             $product->instructions()->save($instruction);
         }
-
-
-
+        //save
         $product->push();
         return redirect()->route('products.index');
     }

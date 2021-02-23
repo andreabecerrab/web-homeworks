@@ -13,6 +13,9 @@
   <label for="origin">Origin:</label><br>
   <input type="text"  name="origin" ><br>
 
+  <label for="instruction">Instruction to keep it healthy:</label><br>
+  <input type="text"  name="instruction" ><br>
+
   @foreach ($guides as $item)
         <input type="checkbox" name="guides[]" value="{{ $item->id }}">
         <label for="{{ $item->id }}"> {{ $item->name }}</label><br>

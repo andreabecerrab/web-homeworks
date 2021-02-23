@@ -11,12 +11,15 @@
 <p>
     <a href="{{ route('products.create') }}">Create a product</a>
 </p>
-
+<p>
+    <a href="{{ route('instructions.index') }}">View instructions</a>
+</p>
 <table>
     <thead>
         <tr>
             <th>#</th>
             <th>Name</th>
+            <th>Instruction</th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +27,7 @@
             <tr>
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->name }}</td>
+                <!-- show instruction if it has one -->
                 @if ($item -> instructions != null)
                 <td>{{ $item -> instructions -> instruction }}</td>
                 @endif
