@@ -19,4 +19,4 @@ Route::get('/', function () {
 
 Route::resource('app', 'AppController');
 Route::resource('products', 'ProductController');
-Route::resource('instructions', 'InstructionController');
+Route::resource('guides', 'GuidesController');

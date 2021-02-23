@@ -8,9 +8,17 @@
     @csrf
     <label for="">Nombre</label>
     <input type="text" name="name">
+    <label for="">Tipo</label>
+    <input type="text" name="type">
+    <label for="">Descripcion</label>
+    <input type="text" name="description"><br>
+
+    @foreach ($products as $item)
+        <input type="checkbox" name={{ $item->name }} id={{ $item->id }} >
+        <label for="{{ $item->id }}"> {{ $item->name }}</label><br>
+    @endforeach
+
     <input type="submit" value="Guardar">
-
-
 </form>
 </div>
 

@@ -13,6 +13,8 @@
         <tr>
             <th>#</th>
             <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +22,11 @@
             <tr>
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->name }}</td>
+<<<<<<< HEAD
+=======
+                <td>{{ $item->type }}</td>
+                <td>{{ $item->description }}</td>
+>>>>>>> 9edffdd04eb0259a2ebce6594a4564b7f74b4efc
                 <td>
                     <a href="{{ route('guides.show', ['guide' => $item]) }}">
                         Show

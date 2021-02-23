@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+<<<<<<< HEAD
 use App\Instruction;
+=======
+use App\Guide;
+use App\GuidesProduct;
+>>>>>>> 9edffdd04eb0259a2ebce6594a4564b7f74b4efc
 
 class ProductController extends Controller
 {
@@ -26,7 +31,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $guides = Guide::all();
+        return view('products.create', ['guides' => $guides]);
     }
 
     /**
@@ -45,11 +51,23 @@ class ProductController extends Controller
         $product -> description = $arr['description'];
         $product -> save();
 
+<<<<<<< HEAD
         $instruction = new Instruction();
         $instruction->instruction = $arr['instruction'];
 
         $product->instructions()->save($instruction);
 
+=======
+        $guides = Guide::all();
+        foreach ($guides as $item){
+            if (isset($_POST[$item->name])) {
+                $guideProduct = new GuidesProduct();
+                $guideProduct -> product_id = $product -> id;
+                $guideProduct -> guide_id = $item -> id;
+                $guideProduct -> save();
+            }
+        }
+>>>>>>> 9edffdd04eb0259a2ebce6594a4564b7f74b4efc
         return redirect()->route('products.index');
     }
 
@@ -59,9 +77,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show(Product $product)
+    {   
+        return view('products.show', ['product' => $product]);
     }
 
     /**
