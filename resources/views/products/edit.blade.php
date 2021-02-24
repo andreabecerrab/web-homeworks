@@ -18,7 +18,13 @@
         <label for="">Product nutrition content:</label><br>
         <input type="text" name="instruction" value="{{$product->instructions->instruction}}" class="form-control"><br>
 
-        <input type="submit" value="Save" style="margin-top:2rem;" class="btn btn-success">
+        <h3>Guides where the product belongs to:</h3>
+        @foreach ($guides as $item)
+            <input type="checkbox" value="{{ $item->id }}" name="guides[]">
+            <label for="{{ $item->id }}"> {{ $item->name }}</label><br>
+        @endforeach
+
+        <input type="submit" value="Store" style="margin-top:2rem;" class="btn btn-success">
     </form>
 </div>
 @endsection

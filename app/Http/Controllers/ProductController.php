@@ -46,15 +46,8 @@ class ProductController extends Controller
         $product -> category = $arr['category'];
         $product -> origin = $arr['origin'];
         $product -> description = $arr['description'];
-
         $product -> save();
 
-        // create the instruction
-        $instruction = new Instruction();
-        $instruction->instruction = $arr['instruction'];
-        //save it in product
-        $product->instructions()->save($instruction);
-        // save guides
         $guide = Guide::find($request->get('guides'));
         $product->guides()->attach($guide);
 

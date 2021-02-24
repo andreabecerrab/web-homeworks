@@ -23,7 +23,7 @@
             <label for="{{ $item->id }}"> {{ $item->name }}</label><br>
     @endforeach
 
-    <input type="submit" value="Submit" style="margin-top:2rem;" class="btn btn-success">
+    <input type="submit" value="Save" style="margin-top:2rem;" class="btn btn-success">
     </form>
 </div>
 @endsection

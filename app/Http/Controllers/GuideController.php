@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Guide;
+use App\Product;
+use App\GuidesProduct;
 
 class GuideController extends Controller
 {
@@ -15,9 +17,7 @@ class GuideController extends Controller
     public function index()
     {
         $guides = Guide::all();
-        //All metodo estatico del modelo de Coin
-    
-        return view('guides.index',['guides' => $guides]);
+        return view('guides.index', ['guides' => $guides]);
     }
 
     /**
@@ -27,7 +27,8 @@ class GuideController extends Controller
      */
     public function create()
     {
-        return view('guides.create');
+        $products = Product::all();
+        return view('guides.create',['products' => $products]);
     }
 
     /**
@@ -40,9 +41,16 @@ class GuideController extends Controller
     {
         $arr = $request->input();
         $guide = new Guide();
-        $guide->name = $arr['name'];
-        $guide->save();
-        return redirect()-> route('guides.index');
+        $guide -> name= $arr['name'];
+        $guide -> type = $arr['type'];
+        $guide -> description = $arr['description'];
+        $guide -> save();
+
+        $product = Product::find($request->get('products'));
+        $guide->products()->attach($product);
+
+
+        return redirect()->route('guides.index');
     }
 
     /**
@@ -51,9 +59,9 @@ class GuideController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Guide $guide)
     {
-        //
+        return view('guides.show', ['guide' => $guide]);
     }
 
     /**
@@ -62,9 +70,10 @@ class GuideController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Guide $guide)
     {
-        return view('guides.edit', ['guide' => $guide]);
+        $products = Product::all();
+        return view('guides.edit', ['guide' => $guide, 'products' => $products]);
     }
 
     /**
@@ -74,11 +83,18 @@ class GuideController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Guide $guide)
     {
         $arr = $request->input();
-        $guide->name = $arr['name'];
+        $guide -> name= $arr['name'];
+        $guide -> type = $arr['type'];
+        $guide -> description = $arr['description'];
         $guide->save();
+
+        $product = Product::find($request->get('products'));
+        $guide->products()->sync($product);
+
+
         return redirect()->route('guides.index');
     }
 
@@ -88,7 +104,7 @@ class GuideController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Guide $guide)
     {
         $guide->delete();
         return redirect()->route('guides.index');
