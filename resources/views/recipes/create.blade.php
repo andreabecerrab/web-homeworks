@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-<h1>Create products</h1>
+<h1>Create recipes</h1>
 <form action="{{ route('recipes.store') }}" method="POST">
   @csrf
   <label for="name">Recipe name:</label><br>

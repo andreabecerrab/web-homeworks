@@ -5,7 +5,7 @@
 <h1>List of recipes</h1>
 
 <p>
-    <a href="{{route('guides.create')}}"> Create a guide </a>
+    <a href="{{route('recipes.create')}}"> Create a guide </a>
 </p>
 
 <table>

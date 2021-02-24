@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-<h1>Edit your guide here!</h1>
+<h1>Edit your recipe here!</h1>
 <form action="{{ route('recipes.update', ['recipe' => $recipe]) }}" method="POST">
     @csrf
     @method('PUT')
