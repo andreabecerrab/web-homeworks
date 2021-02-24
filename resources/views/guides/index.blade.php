@@ -1,53 +1,52 @@
 @extends('layouts.main')
-
 @section('content')
+
 <div style="padding: 2rem;">
-    <h1>List of products</h1>
+    <h1>List of guides</h1>
     <!-- create row -->
     <p>
-        <a href="{{ route('products.create') }}">Create a product</a>
+        <a href="{{route('guides.create')}}"> Create a guide </a>
     </p>
+
+
     <table class="table">
         <thead>
             <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th>Content</th>
+                <th>Type</th>
+                <th>Description</th>
                 <th>Show</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($products as $item)
+            @foreach ($guides as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
-                    <!-- show instruction if it has one -->
-                    @if ($item -> instructions != null)
-                    <td>{{ $item -> instructions -> instruction }}</td>
-                    @endif
+                    <td>{{ $item->type }}</td>
+                    <td>{{ $item->description }}</td>
                     <td>
-                        <a href="{{ route('products.show', ['product' => $item]) }}">
+                        <a href="{{ route('guides.show', ['guide' => $item]) }}">
                             <span class="material-icons">
                                 visibility
                             </span>
                         </a>
                     </td>
                     <td>
-                        <a href="{{ route('products.edit', ['product' => $item]) }}">
+                        <a href="{{ route('guides.edit', ['guide' => $item]) }}">
                             <span class="material-icons">
                                 mode
                             </span>
                         </a>
                     </td>
                     <td>
-                        <form action="{{ route('products.destroy', ['product' => $item]) }}" method="post">
+                        <form action="{{ route('guides.destroy', ['guide' => $item]) }}" method="post">
                             @csrf
                             @method('DELETE')
-                            <input type="submit" value="delete" class="btn btn-danger">
-
-                            </input>
+                            <input type="submit" value="Delete" class="btn btn-danger">
                         </form>
                     </td>
                 </tr>
@@ -55,5 +54,6 @@
         </tbody>
     </table>
 </div>
+
 
 @endsection

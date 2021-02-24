@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Guide;
+use App\GuidesProduct;
+use App\Instruction;
 
 class ProductController extends Controller
 {
@@ -25,7 +28,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $guides = Guide::all();
+        return view('products.create', ['guides' => $guides]);
     }
 
     /**
@@ -43,6 +47,10 @@ class ProductController extends Controller
         $product -> origin = $arr['origin'];
         $product -> description = $arr['description'];
         $product -> save();
+
+        $guide = Guide::find($request->get('guides'));
+        $product->guides()->attach($guide);
+
         return redirect()->route('products.index');
     }
 
@@ -52,9 +60,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -65,7 +73,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit', ['product' => $product]);
+        $guides = Guide::all();
+        return view('products.edit', ['product' => $product, 'guides' => $guides]);
     }
 
     /**
@@ -82,7 +91,17 @@ class ProductController extends Controller
         $product -> category = $arr['category'];
         $product -> origin = $arr['origin'];
         $product -> description = $arr['description'];
-        $product->save();
+
+        //check if ir has a instruction, if not the create a new one
+        if($product -> instructions != null){
+            $product -> instructions -> instruction = $arr['instruction'];
+        }else{
+            $instruction = new Instruction();
+            $instruction->instruction = $arr['instruction'];
+            $product->instructions()->save($instruction);
+        }
+        //save
+        $product->push();
         return redirect()->route('products.index');
     }
 
