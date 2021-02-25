@@ -34,9 +34,11 @@
         <br>
         <div class="form-group">
             <label for="exampleFormControlSelect2">Choose product ingredintes</label>
-            <select name="product_id" id ="product_id" class="form-control">
+            <!-- <select name="product_id" id ="product_id" class="form-control"> -->
                 @foreach ($products as $product)
-                        <option value="{{ $product->id }}">{{ $product->name }}</option>
+                        <!-- <input type="checkbox" value="{{ $product->id }}" name="products[]"  > -->
+                        <!-- <option value="{{ $product->id }}">{{ $product->name }}</option> -->
+                        <label for="{{ $product->id }}"> {{ $product->name }}</label>
 
                 @endforeach
             </select>
