@@ -76,9 +76,13 @@ class RecipeController extends Controller
      */
     public function edit(Recipe $recipe)
     {
-        // return view('recipes.edit', [
-        //     'recipe' => $recipe
-        // ]);
+        $products= Product::all();
+
+        return view('recipes.edit', [
+            'recipe' => $recipe,
+            'products'=> $products
+            
+        ]);
     }
 
     /**
@@ -96,7 +100,12 @@ class RecipeController extends Controller
         $recipe->ingredients = $arr['ingredients'];
         $recipe->body = $arr['body'];
         $recipe->save();
+
+        // $product= Product::find($request->get('products'))
+        // $recipe->products()->sync($product);
+
         return redirect()->route('recipes.index');
+
     }
 
     /**
