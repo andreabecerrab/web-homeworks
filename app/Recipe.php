@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Recipe extends Model{
     
 
-    public function product()
+    public function products()
     {
-        return $this->belongsTo(Product::class);
+       
+        return $this->hasMany(Product::class, 'foreign key');
     }
         
 

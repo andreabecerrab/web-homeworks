@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model{
 
-    public function recipes()
+    public function recipe()
     {
-        return $this->hasMany(Recipe::class, 'foreign key');
+        return $this->belongsTo(Recipe::class);
     }
    
 

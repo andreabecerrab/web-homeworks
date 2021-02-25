@@ -6,12 +6,16 @@
     @csrf
     @method('PUT')
     <div>
+        <select name="product_id" id ="product_id" class="form-control">
+            <option value="">--Choose product ingredintes --</option>
+            @foreach ($products as $product)
+            <option value="{{ $product->id }}">{{ $product->name }}</option>
+
+            @endforeach
         <label for="name">Name </label>
         <input type="text" name="name" value="{{ $recipe->name }}">
         <label for="ingredients">Ingredients: </label>
-        @foreach ($productos as $producto)
-        <option value="{{$producto->id}}">{{$producto->nombre}}</option>
-        @endforeach
+        <input type="text"  name="ingredients" value="{{ $recipe->ingredients}}"><br>
         <label for="body">Recipe: </label>
         <input type="text" name="body" value="{{ $recipe->body}}">
   

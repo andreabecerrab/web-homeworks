@@ -5,7 +5,7 @@
 <h1>List of recipes</h1>
 
 <p>
-    <a href="{{route('recipes.create')}}"> Create a guide </a>
+    <a href="{{route('recipes.create')}}"> Create a recipes </a>
 </p>
 
 <table>
@@ -23,7 +23,7 @@
                 <td>
                     <a href="{{ route('recipes.show', ['recipe' => $recipe]) }}">
                         Show
-                    </a> |
+                    </a> 
                     <a href="{{ route('recipes.edit', ['recipe' => $recipe]) }}">
                         Update
                     </a>
