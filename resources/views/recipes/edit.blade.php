@@ -34,7 +34,7 @@
             </div>
             <br>
             <div class="d-flex justify-content-center">
-                        <input type="submit" value="Store">
+                        <input class="btn btn-success"  type="submit" value="Store">
             </div>
         </form>
 

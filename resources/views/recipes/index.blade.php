@@ -23,18 +23,23 @@
                 <p class="card-text">{{ $recipe->body}}</p>
 
                 <a class="btn btn-primary text-center" href="{{ route('recipes.show', ['recipe' => $recipe]) }}">
-                                    Show
+                            <span class="material-icons">
+                                visibility
+                            </span>           
+                                  
                 </a>
 
                 <a href="{{ route('recipes.edit', ['recipe' => $recipe]) }}" class="btn btn-primary">
-                                    Update
+                        <span class="material-icons">
+                                        mode
+                        </span>
                 </a>
                 <div class="mt-2">
 
                 <form action="{{ route('recipes.destroy', ['recipe' => $recipe]) }}" method="post">
                     @csrf
                     @method('DELETE')
-                    <input type="submit" value="Delete">
+                    <input type="submit" value="Delete" class="btn btn-danger">
                 </form>
 
                 </div>
