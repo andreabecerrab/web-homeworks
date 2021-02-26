@@ -23,16 +23,12 @@
                 <p class="card-text">{{ $recipe->body}}</p>
 
                 <a class="btn btn-primary text-center" href="{{ route('recipes.show', ['recipe' => $recipe]) }}">
-                            <span class="material-icons">
-                                visibility
-                            </span>           
+                    <img class="card-img-top" src="{{ url('img/show.svg') }}" alt="Card image cap">       
                                   
                 </a>
 
                 <a href="{{ route('recipes.edit', ['recipe' => $recipe]) }}" class="btn btn-primary">
-                        <span class="material-icons">
-                                        mode
-                        </span>
+                    <img class="card-img-top" src="{{ url('img/editt.svg') }}" alt="Card image cap">   
                 </a>
                 <div class="mt-2">
 
