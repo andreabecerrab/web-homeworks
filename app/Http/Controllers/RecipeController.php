@@ -37,6 +37,8 @@ class RecipeController extends Controller
             'recipes' => $recipes,
             'products'=> $products
         ]);
+
+     
     }
 
     /**
