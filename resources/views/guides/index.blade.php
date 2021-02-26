@@ -2,7 +2,7 @@
 @section('content')
 
 <div style="padding: 2rem;">
-    <h1>List of guides</h1>
+    <h1>List of guides for maintain the prodcuts in good condition</h1>
     <!-- create row -->
     <p>
         <a href="{{route('guides.create')}}"> Create a guide </a>

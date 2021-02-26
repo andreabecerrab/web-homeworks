@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Recipe;
+use App\Product;
 
 class RecipeController extends Controller
 {
@@ -14,7 +16,11 @@ class RecipeController extends Controller
     public function index()
     {
         $recipes = Recipe::all();
-        return view('recipes.index', ['recipes' => $recipes]);
+
+        return view('recipes.index', [
+            'recipes' => $recipes
+        ]);
+
     }
 
     /**
@@ -24,7 +30,9 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        return view('recipes.create');
+        $products = Product::all();
+        return view('recipes.create', ['products' => $products]);
+
     }
 
     /**
@@ -38,10 +46,15 @@ class RecipeController extends Controller
         $arr = $request->input();
         $recipe = new Recipe();
         $recipe->name = $arr['name'];
+
+        $recipe->product_id = $arr['product_id'];
         $recipe->ingredients = $arr['ingredients'];
         $recipe->body = $arr['body'];
+
         $recipe->save();
+
         return redirect()-> route('recipes.index');
+
     }
 
     /**
@@ -50,10 +63,11 @@ class RecipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Recipe $recipe)
     {
-        return view('recipes.edit', ['recipe' => $recipe]);
+        return view('recipes.show', ['recipe' => $recipe]);
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -61,9 +75,14 @@ class RecipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Recipe $recipe)
     {
-        //
+        $products= Product::all();
+
+        return view('recipes.edit', [
+            'recipe' => $recipe,
+            'products'=> $products
+        ]);
     }
 
     /**
@@ -73,15 +92,18 @@ class RecipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Recipe $recipe)
     {
         $arr = $request->input();
         $recipe->name = $arr['name'];
+        $recipe->product_id = $arr['product_id'];
         $recipe->ingredients = $arr['ingredients'];
         $recipe->body = $arr['body'];
         $recipe->save();
+
         return redirect()->route('recipes.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -89,9 +111,11 @@ class RecipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
+        $recipe= Recipe::find($id);
         $recipe->delete();
         return redirect()->route('recipes.index');
     }
+
 }
