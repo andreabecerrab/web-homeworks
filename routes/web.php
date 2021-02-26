@@ -21,3 +21,5 @@ Route::resource('app', 'AppController');
 Route::resource('products', 'ProductController');
 Route::resource('instructions', 'InstructionController');
 Route::resource('guides', 'GuideController');
+Route::resource('recipes', 'RecipeController');
+

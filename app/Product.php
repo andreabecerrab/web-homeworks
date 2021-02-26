@@ -15,4 +15,10 @@ class Product extends Model
 
         return $this->belongsToMany(Guide::class);
     }
+
+    public function recipes()
+    {
+        return $this->belongsTo(Recipe::class);
+    }
+
 }

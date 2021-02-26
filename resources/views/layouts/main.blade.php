@@ -19,10 +19,13 @@
             <a class="nav-link" style="color:white;" href="{{ route('products.index') }}">Products</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" style="color:white;"  href="{{ route('instructions.index') }}">Instructions</a>
+            <a class="nav-link" style="color:white;"  href="{{ route('instructions.index') }}">Nutritional Contents</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:white;" href="{{ route('guides.index') }}" >Guides</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" style="color:white;" href="{{ route('recipes.index') }}" >Recipes</a>
         </li>
     </ul>
     @yield('content')
