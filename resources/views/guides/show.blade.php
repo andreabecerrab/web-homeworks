@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="row">
+<div class="row" >
     <div style="padding: 2rem;" class="col-2">
         <div class="card " style="width: 18rem;">
             <img src="{{ url('img/nutrition.jpg') }}" class="card-img-top" >

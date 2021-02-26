@@ -6,21 +6,27 @@
     <table class="table">
         <thead>
             <tr>
-                <th>#</th>
                 <th>Instruction</th>
                 <th>Edit</th>
+                <th>Show</th>
                 <th>Delete</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($instructions as $item)
                 <tr>
-                    <td>{{ $item->id }}</td>
                     <td>{{ $item->instruction }}</td>
                     <td>
                         <a href="{{ route('instructions.edit', ['instruction' => $item]) }}">
                             <span class="material-icons">
                                 mode
+                            </span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ route('instructions.show', ['instruction' => $item]) }}">
+                            <span class="material-icons">
+                                visibility
                             </span>
                         </a>
                     </td>

@@ -48,7 +48,8 @@ class InstructionController extends Controller
      */
     public function show(Instruction $instruction)
     {
-        return view('instructions.show', ['instruction' => $instruction]);
+        $product = Product::find($instruction -> product_id)->name;
+        return view('instructions.show', ['instruction' => $instruction, 'product' => $product]);
     }
 
     /**
