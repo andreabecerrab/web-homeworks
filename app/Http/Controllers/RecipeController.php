@@ -52,13 +52,14 @@ class RecipeController extends Controller
         $arr = $request->input();
         $recipe = new Recipe();
         $recipe->name = $arr['name'];
+        $recipe->products()->attach($product);
         // $recipe->product_id = $arr['product_id'];
         $recipe->ingredients = $arr['ingredients'];
         $recipe->body = $arr['body'];
         $recipe->save();
         
         $product = Product::find($request->get('products'));
-        $recipe->products()->attach($product);
+        
         return redirect()-> route('recipes.index');
     }
 

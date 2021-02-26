@@ -36,7 +36,7 @@
             <label for="exampleFormControlSelect2">Choose product ingredintes</label>
             <!-- <select name="product_id" id ="product_id" class="form-control"> -->
                 @foreach ($products as $product)
-                        <!-- <input type="checkbox" value="{{ $product->id }}" name="products[]"  > -->
+                        <input type="checkbox" value="{{ $product->id }}" name="products[]"  >
                         <!-- <option value="{{ $product->id }}">{{ $product->name }}</option> -->
                         <label for="{{ $product->id }}"> {{ $product->name }}</label>
 
