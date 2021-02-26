@@ -59,7 +59,7 @@ class RecipeController extends Controller
         $recipe->save();
         
         $product = Product::find($request->get('products'));
-        $recipe->products()->attach($product);
+       
         
         return redirect()-> route('recipes.index');
     }

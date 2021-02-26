@@ -10,7 +10,7 @@ class Recipe extends Model{
     public function products()
     {
        
-        return $this->hasMany(Product::class, 'foreign key');
+        return $this->hasMany(Product::class);
     }
         
 
