@@ -17,6 +17,14 @@
     <label for="instruction">Product nutrition content:</label><br>
     <input type="text"  name="instruction" class="form-control"><br>
 
+    <label for="exampleFormControlSelect2">Choose recipe</label>
+    <select name="recipe_id" id ="recipe_id" class="form-control">
+    <option value="">--Choose recipes--</option>
+        @foreach ($recipes as $recipe)
+                <option value="{{ $recipe->id }}">{{ $recipe->name }}</option>
+        @endforeach
+    </select>
+
     <label style="margin-top:2rem;">Select guide(s) for this product</label></br>
     @foreach ($guides as $item)
             <input type="checkbox" name="guides[]" value="{{ $item->id }}">

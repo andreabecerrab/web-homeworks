@@ -10,11 +10,10 @@
         <img class="card-img-top" src="{{ url('img/receta.jpg') }}" alt="Card image cap">
         <div class=" card-body ">
             <h5 class="card-title">{{ $recipe->name }}</h5>
-            <p class="card-text"> Main ingredient: </p>
-
-            <p class="card-text ">{{ $recipe->product_id }}</p>
             <p class="card-text"> Instructions: </p>
             <p class="card-text border-info">{{ $recipe->body}}</p>
+            <p class="card-text"> Ingredients: </p>
+            <p class="card-text border-info">{{ $recipe->ingredients}}</p>
             </div>
     </div>
 </div>

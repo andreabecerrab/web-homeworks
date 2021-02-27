@@ -16,11 +16,9 @@ class RecipeController extends Controller
     public function index()
     {
         $recipes = Recipe::all();
-
         return view('recipes.index', [
             'recipes' => $recipes
         ]);
-
     }
 
     /**
@@ -30,9 +28,10 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        $products = Product::all();
-        return view('recipes.create', ['products' => $products]);
 
+        return view('recipes.create');
+
+     
     }
 
     /**
@@ -46,15 +45,13 @@ class RecipeController extends Controller
         $arr = $request->input();
         $recipe = new Recipe();
         $recipe->name = $arr['name'];
-
-        $recipe->product_id = $arr['product_id'];
         $recipe->ingredients = $arr['ingredients'];
         $recipe->body = $arr['body'];
-
         $recipe->save();
-
+        
+   
+        
         return redirect()-> route('recipes.index');
-
     }
 
     /**
@@ -68,7 +65,6 @@ class RecipeController extends Controller
         return view('recipes.show', ['recipe' => $recipe]);
     }
 
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -77,11 +73,10 @@ class RecipeController extends Controller
      */
     public function edit(Recipe $recipe)
     {
-        $products= Product::all();
 
         return view('recipes.edit', [
-            'recipe' => $recipe,
-            'products'=> $products
+            'recipe' => $recipe
+            
         ]);
     }
 
@@ -96,14 +91,13 @@ class RecipeController extends Controller
     {
         $arr = $request->input();
         $recipe->name = $arr['name'];
-        $recipe->product_id = $arr['product_id'];
         $recipe->ingredients = $arr['ingredients'];
         $recipe->body = $arr['body'];
         $recipe->save();
 
         return redirect()->route('recipes.index');
-    }
 
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -117,5 +111,4 @@ class RecipeController extends Controller
         $recipe->delete();
         return redirect()->route('recipes.index');
     }
-
 }

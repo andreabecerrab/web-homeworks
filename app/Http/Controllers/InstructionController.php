@@ -26,7 +26,7 @@ class InstructionController extends Controller
      */
     public function create(Product $product)
     {
-        //
+        return view('instructions.create');
     }
 
     /**
@@ -37,7 +37,14 @@ class InstructionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $arr = $request->input();
+        $instruction = new Instruction();
+        $instruction -> product_id = $arr['id'];
+        $instruction -> instruction = $arr['instruction'];
+        $instruction -> save();
+
+        return redirect()->route('instructions.index');
+        
     }
 
     /**

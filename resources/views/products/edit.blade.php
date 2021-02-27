@@ -18,6 +18,13 @@
         <label for="">Product nutrition content:</label><br>
         <input type="text" name="instruction" value="{{$product->instructions->instruction}}" class="form-control"><br>
 
+        <select name="recipe_id" id ="recipe_id" class="form-control">
+            <option value="">--Choose recipes--</option>
+                @foreach ($recipes as $recipe)
+                        <option value="{{ $recipe->id }}">{{ $recipe->name }}</option>
+                @endforeach
+            </select>
+
         <h3>Guides where the product belongs to:</h3>
         @foreach ($guides as $item)
             <input type="checkbox" value="{{ $item->id }}" name="guides[]">

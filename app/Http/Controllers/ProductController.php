@@ -7,6 +7,7 @@ use App\Product;
 use App\Guide;
 use App\GuidesProduct;
 use App\Instruction;
+use App\Recipe;
 
 class ProductController extends Controller
 {
@@ -28,8 +29,9 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $recipes = Recipe::all();
         $guides = Guide::all();
-        return view('products.create', ['guides' => $guides]);
+        return view('products.create', ['guides' => $guides,'recipes'=> $recipes]);
     }
 
     /**
@@ -43,6 +45,7 @@ class ProductController extends Controller
         $arr = $request->input();
         $product = new Product();
         $product -> name= $arr['name'];
+        $product -> recipe_id = $arr['recipe_id'];
         $product -> category = $arr['category'];
         $product -> origin = $arr['origin'];
         $product -> description = $arr['description'];
@@ -62,7 +65,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show', compact('product'));
+        $recipes = Recipe::all();
+        return view('products.show',['product' => $product,'recipes'=> $recipes]);
     }
 
     /**
@@ -73,8 +77,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $recipes= Recipe::all();
         $guides = Guide::all();
-        return view('products.edit', ['product' => $product, 'guides' => $guides]);
+        return view('products.edit', ['product' => $product, 'recipes'=>$recipes,'guides' => $guides]);
     }
 
     /**
@@ -88,6 +93,7 @@ class ProductController extends Controller
     {
         $arr = $request->input();
         $product -> name= $arr['name'];
+        $product -> recipe_id = $arr['recipe_id'];
         $product -> category = $arr['category'];
         $product -> origin = $arr['origin'];
         $product -> description = $arr['description'];

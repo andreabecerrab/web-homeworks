@@ -2,10 +2,9 @@
 
 @section('content')
 <div class="row">
-    <div style="padding: 2rem;" class="col-2">
+    <div style="padding: 2rem;" class="col">
         <div class="card " style="width: 18rem;">
             <img src="{{ url('img/product.jpg') }}" class="card-img-top" >
-
             <div class="card-body">
                 <h5 class="card-title">{{ $product->name }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{ $product->category }}</h6>
@@ -30,6 +29,14 @@
             </div>
         </div>
         @endforeach
+    </div>
+    <div style="padding: 2rem;" class="col">
+        <h2 class="mb-3">Recipes</h2>
+        <div class="card border-success" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ $product->recipe->name }}</h5>
+            </div>
+        </div>
     </div>
 </div>
 

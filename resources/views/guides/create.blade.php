@@ -6,11 +6,11 @@
     <div>
         <form action="{{ route('guides.store') }}" method="POST">
         @csrf
-        <label for="">Nombre</label><br>
+        <label for="">Name</label><br>
         <input type="text" name="name"  class="form-control"><br>
-        <label for="">Tipo</label><br>
+        <label for="">Type</label><br>
         <input type="text" name="type"  class="form-control"><br>
-        <label for="">Descripcion</label><br>
+        <label for="">Description</label><br>
         <input type="text" name="description"  class="form-control"><br>
 
         <label for="" class="mt-2">Select products for this guide:</label><br>

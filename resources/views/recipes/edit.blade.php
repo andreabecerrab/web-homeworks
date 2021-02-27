@@ -17,16 +17,6 @@
             </div>
             <br>
             <div class="form-group">
-                <label for="exampleFormControlSelect2">Choose product ingredintes</label>
-                <select name="product_id" id ="product_id" class="form-control">
-                    @foreach ($products as $product)
-                            <option value="{{ $product->id }}">{{ $product->name }}</option>
-
-                    @endforeach
-                </select>
-            </div>
-            <br>
-            <div class="form-group">
                 <label for="ingredients">Ingredients: </label>
                 <input type="text"  name="ingredients" value="{{ $recipe->ingredients}}"><br>
                 <label for="body">Recipe: </label>

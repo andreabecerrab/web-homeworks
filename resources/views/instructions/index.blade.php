@@ -3,6 +3,9 @@
 @section('content')
 <div style="padding: 2rem;">
     <h1>List of instructions</h1>
+    <p>
+        <a href="{{ route('instructions.create') }}">Create a instruction</a>
+    </p>
     <table class="table">
         <thead>
             <tr>

@@ -15,7 +15,7 @@ class Product extends Model{
         return $this->belongsToMany(Guide::class);
     }
 
-    public function recipes()
+    public function recipe()
     {
         return $this->belongsTo(Recipe::class);
     }
